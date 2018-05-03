@@ -1,13 +1,13 @@
 # dotnet-sysinternals
 
-[![AppVeyor build status][appveyor-badge]](https://ci.appveyor.com/project/EifelMono/dotnet-sysinterals/branch/master)
+[![AppVeyor build status][appveyor-badge]](https://ci.appveyor.com/project/EifelMono/dotnet-sysinternals/branch/master)
 
-[appveyor-badge]: https://img.shields.io/appveyor/ci/EifelMono/dotnet-sysinterals/master.svg?label=appveyor&style=flat-square
+[appveyor-badge]: https://img.shields.io/appveyor/ci/EifelMono/dotnet-sysinternals/master.svg?label=appveyor&style=flat-square
 
 
 [![NuGet][main-nuget-badge]][main-nuget]
 
-[main-nuget]: https://www.nuget.org/packages/dotnet-sysinterals/
+[main-nuget]: https://www.nuget.org/packages/dotnet-sysinternals/
 [main-nuget-badge]: https://img.shields.io/nuget/v/dotnet-sysinterals.svg?style=flat-square&label=nuget
 
 dotnet-sysinternals starts the selected sysinternals program.
