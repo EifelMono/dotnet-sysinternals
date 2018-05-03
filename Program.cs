@@ -18,13 +18,11 @@ namespace DotNetCode
             }
             var isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
 
-            /*
             if (!isWindows)
             {
                 Console.WriteLine("sysinternals works only on Windows");
                 return;
             }
-            */
 
             var dotnetDllPath = Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
             var sysinternalsPath = Path.Combine(dotnetDllPath, "sysinternals");
@@ -45,20 +43,30 @@ namespace DotNetCode
                 {
                     var param = args.Length > 1 ? args[1] : "*";
                     foreach (var file in Directory.GetFiles(sysinternalsPath, param))
-                            Console.WriteLine(Path.GetFileName(file));
+                        Console.WriteLine(Path.GetFileName(file));
                 }
                 else
                 {
-                    try
+                    var exeFiles = Directory.GetFiles(sysinternalsPath, program + "*.exe");
+                    if (exeFiles.Length == 1)
                     {
-                        var exe = Path.Combine(sysinternalsPath, "Cmder.exe");
-                        var dir = Directory.GetCurrentDirectory();
-                        Process.Start(exe, dir);
+                        try
+                        {
+                            var exe = exeFiles[0];
+                            var dir = Directory.GetCurrentDirectory();
+                            Process.Start(exe, dir);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Can no start sysinternalsPath {program}");
+                            Console.WriteLine(ex);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("Can no start sysinternalsPath {program}");
-                        Console.WriteLine(ex);
+                        Console.WriteLine("more than 1 exe file found");
+                         foreach (var file in exeFiles)
+                            Console.WriteLine(Path.GetFileName(file));
                     }
                 }
             }
